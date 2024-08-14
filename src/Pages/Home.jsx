@@ -1,14 +1,15 @@
 import Navbar from '../components/Navbar';
-import sh_banner from '../assets/sweethome1.webp';
 import sh_title from '../assets/title-sh.png';
-
+import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
+import playbtn from '../assets/pngwing.com.png';
+import moreinfo from '../assets/moreinfopng.com.png';
 export default function Home() {
   return (
     <div className="home">
       <Navbar />
-      <div className="hero">
-        <img src={sh_banner} className="banner-img" />
-        <div>
+      <div className="home-sweet">
+        <img src={sh_bannerTwo} className="banner-img" />
+        <div className="hs-caption">
           <img src={sh_title} className="caption-img" />
           <p>
             Hyun, a loner high school student who lost his entire family in a terrible accident, is
@@ -16,6 +17,16 @@ export default function Home() {
             out all of humanity. Now he must fight against all odds to try and race against the
             clock to save what is left of the human race before it's too late.
           </p>
+          <div className="hs-btns">
+            <button className="btn">
+              <img src={playbtn} alt="play-button" />
+              Play
+            </button>
+            <button className="btn dark-btn">
+              <img src={moreinfo} alt="moreinfo-button" />
+              More Info
+            </button>
+          </div>
         </div>
       </div>
     </div>
