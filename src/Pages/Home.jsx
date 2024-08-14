@@ -3,6 +3,7 @@ import sh_title from '../assets/title-sh.png';
 import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
 import playbtn from '../assets/pngwing.com.png';
 import moreinfo from '../assets/moreinfopng.com.png';
+import TitleCard from '../components/TitleCard';
 export default function Home() {
   return (
     <div className="home">
@@ -14,8 +15,7 @@ export default function Home() {
           <p>
             Hyun, a loner high school student who lost his entire family in a terrible accident, is
             forced to leave his home and has to face a new reality where monsters are trying to wipe
-            out all of humanity. Now he must fight against all odds to try and race against the
-            clock to save what is left of the human race before it's too late.
+            out all of humanity.
           </p>
           <div className="hs-btns">
             <button className="btn">
@@ -27,6 +27,7 @@ export default function Home() {
               More Info
             </button>
           </div>
+          <TitleCard />
         </div>
       </div>
     </div>
