@@ -4,6 +4,7 @@ import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
 import playbtn from '../assets/pngwing.com.png';
 import moreinfo from '../assets/moreinfopng.com.png';
 import TitleCard from '../components/TitleCard';
+import Footer from '../components/Footer';
 export default function Home() {
   return (
     <div className="home">
@@ -30,6 +31,13 @@ export default function Home() {
           <TitleCard />
         </div>
       </div>
+      <div className="more-cards">
+        <TitleCard title={'BlockBuster Movies'} />
+        <TitleCard title={'Kdramas'} />
+        <TitleCard title={'Top Picks For You'} />
+        <TitleCard title={'Anime'} />
+      </div>
+      <Footer />
     </div>
   );
 }
