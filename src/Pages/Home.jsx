@@ -1,10 +1,12 @@
 import Navbar from '../components/Navbar';
 import sh_title from '../assets/title-sh.png';
 import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
-import playbtn from '../assets/pngwing.com.png';
 import moreinfo from '../assets/moreinfopng.com.png';
 import TitleCard from '../components/TitleCard';
 import Footer from '../components/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+
 export default function Home() {
   return (
     <div className="home">
@@ -20,7 +22,7 @@ export default function Home() {
           </p>
           <div className="hs-btns">
             <button className="btn">
-              <img src={playbtn} alt="play-button" />
+              <FontAwesomeIcon icon={faPlay} style={{ color: '#000000' }} />
               Play
             </button>
             <button className="btn dark-btn">

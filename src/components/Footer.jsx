@@ -1,16 +1,20 @@
-import instagram from '../assets/pngwing.com (2).png';
-import twitter from '../assets/pngwing.com.png';
-import youtube from '../assets/pngwing.com (1).png';
-import facebook from '../assets/pngwing.com (3).png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// Import specific icons from free-brands-svg-icons
+import { faInstagram, faYoutube, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-icons">
-        <img src={instagram} alt="instagram-logo" />
+        {/* <img src={instagram} alt="instagram-logo" />
         <img src={twitter} alt="twitter-logo" />
         <img src={youtube} alt="youtube-logo" />
-        <img src={facebook} alt="facebook-logo" />
+        <img src={facebook} alt="facebook-logo" /> */}
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+        <FontAwesomeIcon icon={faYoutube} size="2x" />
+        <FontAwesomeIcon icon={faTwitter} size="2x" />
+        <FontAwesomeIcon icon={faFacebook} size="2x" />
       </div>
       <ul>
         <li>Audio Description</li>
