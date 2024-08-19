@@ -9,11 +9,11 @@ export default function Login() {
       <div className="login-form">
         <h2>{signState}</h2>
         <form>
-          {signState === 'Sign Up' ? <input type="text" placeholder="Enter your Name" /> : <></>}
-
-          <input type="email" placeholder="Enter your Email" />
+          {signState === 'Sign Up' ? <input type="email" placeholder="Enter your Email" /> : <></>}
+          <input type="text" placeholder="Enter your Name" />
+          {/* <input type="email" placeholder="Enter your Email" /> */}
           <input type="password" placeholder="Enter your Password" />
-          <button>Sign Up</button>
+          {signState === 'Sign In' ? <button>Sign In</button> : <button>Sign Up</button>}
           <div className="form-help">
             <div className="remember">
               <input type="checkbox" />

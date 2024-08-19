@@ -2,6 +2,7 @@ body {
   background: black;
   color: white;
 }
+
 /*Login page*/
 
 .login {
@@ -98,7 +99,6 @@ body {
 /*Navbar*/
 .navbar {
   width: 90%;
-  position: fixed;
   padding: 20px 6%;
   display: flex;
   justify-content: space-between;
@@ -106,8 +106,13 @@ body {
   font-size: 14px;
   color: #e5e5e5;
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   z-index: 1;
-  justify-content: space-between;
+}
+
+.navbar-dark {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #ffffff !important;
 }
 
 .navbar-left {
@@ -164,7 +169,7 @@ body {
   right: 0;
   width: max-content;
   background: #191919;
-  padding: 18px 22px;
+  padding: 10px 22px;
   border-radius: 2px;
   text-decoration: underline;
   z-index: 1;
@@ -182,6 +187,14 @@ body {
 
 .navbar-profile:hover .dropdown {
   display: block;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: white;
 }
 
 /*login background*/
@@ -205,15 +218,18 @@ body {
 
 .banner-img {
   width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 75%);
-  -weblit-mask-image: linear-gradient(to right, transparent, black 75%);
+  mask-image: linear-gradient(to right, transparent, black 75%),
+    linear-gradient(to top, transparent, black 75%);
+  mask-composite: intersect;
+
+  /* -weblit-mask-image: linear-gradient(to right, transparent, black 75%); */
 }
 
 .hs-caption {
   position: absolute;
   width: 90%;
   padding-left: 6%;
-  bottom: 0;
+  bottom: -50px;
 }
 
 .caption-img {
@@ -276,6 +292,10 @@ body {
   margin-bottom: 8px;
 }
 
+.title-crads p {
+  margin: 0px;
+}
+
 .card-list {
   display: flex;
   gap: 10px;
@@ -291,14 +311,18 @@ body {
   height: 220px;
   border-radius: 4px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
+/* .card-list img :hover {
+  width: 200px;
+} */
 .card-list .card {
   position: relative;
 }
 .card-list .card p {
-  position: absolute;
-  bottom: 10px;
+  /* position: absolute; */
+  bottom: 5px;
   right: 10px;
 }
 

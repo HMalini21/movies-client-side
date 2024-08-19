@@ -7,10 +7,6 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-icons">
-        {/* <img src={instagram} alt="instagram-logo" />
-        <img src={twitter} alt="twitter-logo" />
-        <img src={youtube} alt="youtube-logo" />
-        <img src={facebook} alt="facebook-logo" /> */}
         <FontAwesomeIcon icon={faInstagram} size="2x" />
         <FontAwesomeIcon icon={faYoutube} size="2x" />
         <FontAwesomeIcon icon={faTwitter} size="2x" />

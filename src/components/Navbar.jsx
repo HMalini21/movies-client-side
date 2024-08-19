@@ -3,34 +3,51 @@ import search from '../assets/search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png'
 import profile from '../assets/avatar3.png';
 import bell from '../assets/notifications_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png';
 import arrow from '../assets/arrow_drop_down_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  let navbarClasses = ['navbar'];
+  if (scrolled) {
+    navbarClasses.push('navbar-dark');
+  }
   return (
-    <div className="navbar">
+    <div className={navbarClasses.join(' ')}>
       <div className=" navbar-left">
         <img src={Netflix} alt="Netflex-logo" className="net-Logo" />
         <ul className="navbar-left">
           <li>
-            {/* <Link to="/Home"> */}
-            Home
+            <Link to="/">Home</Link>
           </li>
           <li>
-            {/* <Link to="/TvShow"> */}
-            TvShow
+            <Link to="/TvShow">TvShow</Link>
           </li>
           <li>
-            {/* <Link to="/Movies"> */}
-            Movies
+            <Link to="/Movies">Movies</Link>
           </li>
           <li>
-            {/* <Link to="/Tv"> */}
-            New & Popular
+            <Link to="/NewsAndPopular">New & Popular</Link>
           </li>
           <li>
-            {/* <Link to="/MyList"> */}
-            My List
+            <Link to="/MyList">My List</Link>
           </li>
         </ul>
       </div>
