@@ -1,4 +1,4 @@
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import sh_title from '../assets/title-sh.png';
 import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
 import moreinfo from '../assets/moreinfopng.com.png';
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="home">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="home-sweet">
           <img src={sh_bannerTwo} className="banner-img" />
           <div className="hs-caption">

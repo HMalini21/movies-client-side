@@ -356,3 +356,18 @@ a:active {
   color: gray;
   font-size: 14px;
 }
+
+/*Movie-page*/
+
+.Movie-page {
+  padding: 50px;
+}
+
+.Movie-page ul {
+  list-style: none;
+  width: 10px;
+}
+
+.Movie-page ul img {
+  width: 300px;
+}

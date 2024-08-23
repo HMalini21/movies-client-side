@@ -53,9 +53,14 @@ export default function Navbar() {
       </div>
       <div className="navbar-right">
         <img src={bell} alt="bell-icon" className="icons" />
-        <img src={search} alt="search-icon" className="icons" />
+        <div>
+          <input type="text" placeholder="search..." />
+          <img src={search} alt="search-icon" className="icons" />
+        </div>
         <div className="navbar-profile">
-          <img src={profile} alt="profile-icon" className="profile" />
+          <Link to="/MyAccount">
+            <img src={profile} alt="profile-icon" className="profile" />
+          </Link>
           <img
             src={arrow}
             alt="arrow-icon"
