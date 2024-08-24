@@ -1,10 +1,10 @@
 import Netflix from '../assets/netflix-logo.png';
-import search from '../assets/search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png';
 import profile from '../assets/avatar3.png';
-import bell from '../assets/notifications_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png';
 import arrow from '../assets/arrow_drop_down_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,10 +52,12 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-right">
-        <img src={bell} alt="bell-icon" className="icons" />
+        <FontAwesomeIcon icon={faBell} size="2x" />
+
         <div>
-          <input type="text" placeholder="search..." />
-          <img src={search} alt="search-icon" className="icons" />
+          <Link to="/SearchBar">
+            <FontAwesomeIcon icon={faSearch} size="2x" />
+          </Link>
         </div>
         <div className="navbar-profile">
           <Link to="/MyAccount">

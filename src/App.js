@@ -9,7 +9,8 @@ import NewsAndPopular from './Pages/NewsAndPopular';
 import Movies from './Pages/Movies';
 import MyList from './Pages/MyList';
 import MyAccount from './Pages/MyAccount';
-import SignIn from './Pages/SignIn';
+import SearchBar from './Pages/SearchBar';
+import SignUp from './Pages/SignUp';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/Login" element={<Login />} />
-          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/SearchBar" element={<SearchBar />} />
           <Route path="/" element={<Home />} />
           <Route path="/TvShow" element={<TvShow />} />
           <Route path="/Movies" element={<Movies />} />

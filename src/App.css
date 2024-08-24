@@ -371,3 +371,21 @@ a:active {
 .Movie-page ul img {
   width: 300px;
 }
+
+/*search bar*/
+
+.search-bar {
+  display: flex;
+  margin: 80px;
+  gap: 15px;
+  align-content: center;
+  background-color: #000000;
+  border-color: transparent;
+}
+
+.search-bar input {
+  width: 80rem;
+  padding: 8px;
+  outline: none;
+  border: none;
+}

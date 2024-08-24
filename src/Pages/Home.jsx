@@ -7,8 +7,34 @@ import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Layout from '../components/Layout';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
+  const [movies, setMovies] = useState([]);
+  const [IsLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState(false);
+
+  async function getMoviesFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/movies/getMovies')
+        .then((res) => setMovies(res.data.rows));
+      setMovies(response.data.movies);
+      setTotalPages(response.data.totalCount / pageSize);
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getMoviesFromAPI();
+  }, []);
+
   return (
     <Layout>
       <div className="home">
@@ -32,7 +58,7 @@ export default function Home() {
                 More Info
               </button>
             </div>
-            <TitleCard />
+            {IsLoading ? <p>Please wait!</p> : <TitleCard movies={movies} />}
           </div>
         </div>
         <div className="more-cards">
