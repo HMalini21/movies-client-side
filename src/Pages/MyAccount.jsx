@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 function MyAccount() {
   return (
     <div>
-      <Link to="/">back to home</Link>
-      <h1>My Account page</h1>
+      <Layout></Layout>
     </div>
   );
 }

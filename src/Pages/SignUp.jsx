@@ -2,16 +2,19 @@ import { Link } from 'react-router-dom';
 import Netflixlogo from '../assets/netflix-logo.png';
 
 export default function SignUp() {
-  // const navigate = useNavigate();
-  // const [message, setMessage] = useState(false);
-  // function handleSubmit() {}
+  const [username, setUsername] = usestate('');
+  const [password, setPassword] = usestate('');
+
+  function handleSubmit() {
+    e.preventDefault();
+  }
 
   return (
     <div className="login">
       <img src={Netflixlogo} alt="netflix-logo" className="login-logo" />
       <div className="login-form">
         <h2>SignUp Now</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type="email" placeholder="Enter your Email" />
           <input type="text" placeholder="Enter your Name" />
           <input type="password" placeholder="Enter your Password" />

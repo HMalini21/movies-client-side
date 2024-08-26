@@ -9,7 +9,7 @@ import NewsAndPopular from './Pages/NewsAndPopular';
 import Movies from './Pages/Movies';
 import MyList from './Pages/MyList';
 import MyAccount from './Pages/MyAccount';
-import SearchBar from './Pages/SearchBar';
+import SearchPage from './Pages/SearchBar';
 import SignUp from './Pages/SignUp';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/SearchBar" element={<SearchBar />} />
+          <Route path="/SearchBar" element={<SearchPage />} />
           <Route path="/" element={<Home />} />
           <Route path="/TvShow" element={<TvShow />} />
           <Route path="/Movies" element={<Movies />} />

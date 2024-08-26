@@ -2,7 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import Movies_Card from '../assets/movie_card/Moviecard';
 
 export default function TitleCard({ title, movies }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [playingIndex, setPlayingIndex] = useState(null);
+  const videoRefs = useRef([]);
+
+  const handleMouseEnter = (index) => {
+    setPlayingIndex(index);
+    videoRefs.current[index].play();
+  };
+
+  const handleMouseLeave = (index) => {
+    setPlayingIndex(null);
+    videoRefs.current[index].pause();
+    videoRefs.current[index].currentTime = 0;
+  };
 
   const cardsRef = useRef();
 
@@ -29,44 +41,30 @@ export default function TitleCard({ title, movies }) {
           : Movies_Card.map((card, index) => {
               return (
                 <div className="card" key={index}>
-                  <div
-                    className="thumbnail-container"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    style={{
-                      position: 'relative',
-                      width: '300px',
-                      height: '170px',
-                      overflow: 'hidden',
-                      transition: 'transform 0.3s ease',
-                      transform: isHovered ? 'scale(1.2)' : 'scale(1)',
-                      zIndex: isHovered ? 10 : 1,
-                      borderRadius: '8px',
-                    }}
-                  >
-                    <img
-                      src={card.image}
-                      alt=""
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: isHovered ? 'none' : 'block',
-                      }}
-                    />
-                    {isHovered && (
-                      <video
-                        src={card.videoSrc}
-                        autoPlay
-                        loop
-                        muted
+                  <div className="thumbnail-container">
+                    <div
+                      key={index}
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={() => handleMouseLeave(index)}
+                      // className="video-container"
+                    >
+                      <img
+                        src={card.image}
+                        alt=""
                         style={{
-                          width: '100%',
-                          height: '100%',
                           objectFit: 'cover',
                         }}
                       />
-                    )}
+                      <video
+                        ref={(el) => (videoRefs.current[index] = el)}
+                        src={card.videoSrc}
+                        muted
+                        style={{
+                          width: '100%',
+                          display: playingIndex === index ? 'block' : 'none',
+                        }}
+                      />
+                    </div>
                   </div>
 
                   <p>{card.movieName}</p>
