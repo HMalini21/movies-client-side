@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Movies_Card from '../assets/movie_card/Moviecard';
+import VideoThumbnail from './VideoThumbnail';
 
 export default function TitleCard({ title, movies }) {
   const [playingIndex, setPlayingIndex] = useState(null);
@@ -33,20 +34,20 @@ export default function TitleCard({ title, movies }) {
           ? movies.map((card, index) => {
               return (
                 <div className="card" key={index}>
-                  <img src={card.image} alt="" />
-                  <p>{card.movieName}</p>
+                  <VideoThumbnail imageSrc={card.image} videoSrc={card.video} altText="Movie 2" />
+                  <p>{card.title}</p>
                 </div>
               );
             })
           : Movies_Card.map((card, index) => {
               return (
                 <div className="card" key={index}>
-                  <div className="thumbnail-container">
+                  {/* <div className="thumbnail-container">
                     <div
                       key={index}
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={() => handleMouseLeave(index)}
-                      // className="video-container"
+                      className="video-container"
                     >
                       <img
                         src={card.image}
@@ -65,7 +66,9 @@ export default function TitleCard({ title, movies }) {
                         }}
                       />
                     </div>
-                  </div>
+                  </div> */}
+
+                  <VideoThumbnail imageSrc={card.image} videoSrc={card.videoSrc} />
 
                   <p>{card.movieName}</p>
                 </div>

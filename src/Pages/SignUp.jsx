@@ -5,10 +5,6 @@ export default function SignUp() {
   const [username, setUsername] = usestate('');
   const [password, setPassword] = usestate('');
 
-  function handleSubmit() {
-    e.preventDefault();
-  }
-
   return (
     <div className="login">
       <img src={Netflixlogo} alt="netflix-logo" className="login-logo" />

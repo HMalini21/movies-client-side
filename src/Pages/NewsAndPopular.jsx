@@ -6,8 +6,19 @@ import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Layout from '../components/Layout';
+import { useState } from 'react';
 
 function NewAndPopular() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState(false);
+
+  // async function getNAPFromAPI() {
+  //   try{
+
+  //   }
+  //   catch()
+
+  // }
   return (
     <Layout>
       <div className="home">

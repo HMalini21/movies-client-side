@@ -11,7 +11,7 @@ import MyList from './Pages/MyList';
 import MyAccount from './Pages/MyAccount';
 import SearchPage from './Pages/SearchBar';
 import SignUp from './Pages/SignUp';
-
+import Notification from './Pages/Notification';
 function App() {
   return (
     <div className="App">
@@ -25,6 +25,7 @@ function App() {
           <Route path="/Movies" element={<Movies />} />
           <Route path="/NewsAndPopular" element={<NewsAndPopular />} />
           <Route path="/MyList" element={<MyList />} />
+          <Route path="/Notification" element={<Notification />} />
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="*" element={<Nopage />} />
         </Routes>

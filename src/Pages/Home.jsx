@@ -19,9 +19,7 @@ export default function Home() {
       setIsLoading(true);
       const response = await axios
         .get('http://localhost:2022/movies/getMovies')
-        .then((res) => setMovies(res.data.rows));
-      setMovies(response.data.movies);
-      setTotalPages(response.data.totalCount / pageSize);
+        .then((res) => setMovies(res.data || res.data.rows));
       setMessage('');
     } catch (error) {
       setMessage(error.message || error.response.data.message);
