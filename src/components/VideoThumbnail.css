@@ -1,4 +1,4 @@
-.thumbnail-container {
+/* .thumbnail-container {
   position: relative;
   width: 150px;
   height: 220px;
@@ -29,4 +29,31 @@
   object-fit: cover;
   border-radius: 10px;
   z-index: 1;
+} */
+
+.thumbnail-container {
+  position: relative;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail-image {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.thumbnail-image-hovered {
+  transform: scale(1.2);
+}
+
+.thumbnail-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
 }

@@ -52,9 +52,9 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-right">
-        <Link to="/Notification">
+        {/* <Link to="/Notification">
           <FontAwesomeIcon icon={faBell} size="2x" />
-        </Link>
+        </Link> */}
 
         <div>
           <Link to="/SearchBar">

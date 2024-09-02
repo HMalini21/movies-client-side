@@ -6,8 +6,34 @@ import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Layout from '../components/Layout';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function TvShow() {
+  const [movies, setMovies] = useState([]);
+  const [IsLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState(false);
+
+  async function getMoviesFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix/tvshows')
+        .then((res) => setMovies(res.data.message));
+      setMessage('');
+    } catch (error) {
+      console.log(error);
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getMoviesFromAPI();
+    console.log(movies);
+  }, []);
+
   return (
     <Layout>
       <div className="home">
@@ -30,7 +56,9 @@ function TvShow() {
                 More Info
               </button>
             </div>
-            <TitleCard />
+            {IsLoading ? <p>Please wait!</p> : <TitleCard movies={movies} />}
+
+            {/* <TitleCard /> */}
           </div>
         </div>
         <div className="more-cards">
@@ -39,7 +67,6 @@ function TvShow() {
           <TitleCard title={'Crime Shows'} />
           <TitleCard title={'Entertainment'} />
         </div>
-        <Footer />
       </div>
     </Layout>
   );

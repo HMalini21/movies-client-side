@@ -34,7 +34,7 @@ export default function TitleCard({ title, movies }) {
           ? movies.map((card, index) => {
               return (
                 <div className="card" key={index}>
-                  <VideoThumbnail imageSrc={card.image} videoSrc={card.video} altText="Movie 2" />
+                  <VideoThumbnail imageSrc={card.image} videoSrc={card.video} altText="teaser" />
                   <p>{card.title}</p>
                 </div>
               );
@@ -42,34 +42,7 @@ export default function TitleCard({ title, movies }) {
           : Movies_Card.map((card, index) => {
               return (
                 <div className="card" key={index}>
-                  {/* <div className="thumbnail-container">
-                    <div
-                      key={index}
-                      onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={() => handleMouseLeave(index)}
-                      className="video-container"
-                    >
-                      <img
-                        src={card.image}
-                        alt=""
-                        style={{
-                          objectFit: 'cover',
-                        }}
-                      />
-                      <video
-                        ref={(el) => (videoRefs.current[index] = el)}
-                        src={card.videoSrc}
-                        muted
-                        style={{
-                          width: '100%',
-                          display: playingIndex === index ? 'block' : 'none',
-                        }}
-                      />
-                    </div>
-                  </div> */}
-
                   <VideoThumbnail imageSrc={card.image} videoSrc={card.videoSrc} />
-
                   <p>{card.movieName}</p>
                 </div>
               );
