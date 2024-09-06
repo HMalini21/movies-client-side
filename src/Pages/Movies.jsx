@@ -1,8 +1,6 @@
 import sh_title from '../assets/title-sh.png';
 import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
 import moreinfo from '../assets/moreinfopng.com.png';
-import TitleCard from '../components/TitleCard';
-import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Layout from '../components/Layout';
@@ -39,7 +37,6 @@ function Movies() {
           <TitleCard title={'Top Picks For You'} />
           <TitleCard title={'Anime'} />
         </div>
-        <Footer />
       </div>
     </Layout>
   );

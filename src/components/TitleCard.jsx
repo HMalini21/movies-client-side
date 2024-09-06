@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Movies_Card from '../assets/movie_card/Moviecard';
 import VideoThumbnail from './VideoThumbnail';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function TitleCard({ title, movies }) {
-  // const [playingIndex, setPlayingIndex] = useState(null);
+  const [clicked, isClicked] = useState(false);
   const videoRefs = useRef([]);
 
   // const handleMouseEnter = (index) => {
@@ -41,7 +43,19 @@ export default function TitleCard({ title, movies }) {
                     title={card.title}
                     summary={card.summary}
                   />
-                  <p style={{ marginTop: '10px', paddingLeft: '9px' }}>{card.title}</p>
+                  <div className="card-info">
+                    <p>{card.title}</p>
+                    {clicked ? (
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        size="1x"
+                        key={index}
+                        onClick={() => isClicked(false)}
+                      />
+                    ) : (
+                      <FontAwesomeIcon icon={faPlus} size="1x" onClick={() => isClicked(true)} />
+                    )}
+                  </div>
                 </div>
               );
             })
@@ -49,7 +63,9 @@ export default function TitleCard({ title, movies }) {
               return (
                 <div className="card" key={index}>
                   <VideoThumbnail imageSrc={card.image} videoSrc={card.videoSrc} />
-                  <p>{card.movieName}</p>
+                  <div className="card-info">
+                    <p>{card.movieName}</p>
+                  </div>
                 </div>
               );
             })}

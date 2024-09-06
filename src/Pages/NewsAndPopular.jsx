@@ -50,7 +50,6 @@ function NewAndPopular() {
           <TitleCard title={'Top Picks For You'} />
           <TitleCard title={'Anime'} />
         </div>
-        <Footer />
       </div>
     </Layout>
   );

@@ -72,7 +72,7 @@ export default function Navbar() {
             // onClick={() => setIsSelect(!isSelect)}
           />
           <div className="dropdown">
-            <p>Sign Out Of Netflix</p>
+            <Link to="/login">Sign Out Of Netflix</Link>
           </div>
         </div>
         {/* {isSelect && (

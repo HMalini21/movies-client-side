@@ -11,7 +11,12 @@ import axios from 'axios';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [kdrama, setKdrama] = useState([]);
+  const [anime, setAnime] = useState([]);
+  const [series, setSeries] = useState([]);
+  const [hollywood, setHollywood] = useState([]);
   const [IsLoading, setIsLoading] = useState(false);
+  const [movie, setMovie] = useState([]);
   const [message, setMessage] = useState(false);
 
   async function getMoviesFromAPI() {
@@ -28,8 +33,82 @@ export default function Home() {
     }
   }
 
+  async function getkdramaFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix/kdrama')
+        .then((res) => setKdrama(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getAnimeFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix/anime')
+        .then((res) => setAnime(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getSeriesFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix/series')
+        .then((res) => setSeries(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getHollywoodFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix/hollywood')
+        .then((res) => setHollywood(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getMovieFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix/movie')
+        .then((res) => setMovie(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   useEffect(() => {
     getMoviesFromAPI();
+    getkdramaFromAPI();
+    getAnimeFromAPI();
+    getSeriesFromAPI();
+    getHollywoodFromAPI();
+    getMovieFromAPI();
   }, []);
 
   return (
@@ -58,11 +137,13 @@ export default function Home() {
             {IsLoading ? <p>Please wait!</p> : <TitleCard movies={movies} />}
           </div>
         </div>
+
         <div className="more-cards">
-          <TitleCard title={'BlockBuster Movies'} />
-          <TitleCard title={'Kdramas'} />
-          <TitleCard title={'Top Picks For You'} />
-          <TitleCard title={'Anime'} />
+          <TitleCard title={'Movies'} movies={movie} />
+          <TitleCard title={'Kdramas'} movies={kdrama} />
+          <TitleCard title={'Anime'} movies={anime} />
+          <TitleCard title={'Series'} movies={series} />
+          <TitleCard title={'Hollywood'} movies={hollywood} />
         </div>
       </div>
     </Layout>
