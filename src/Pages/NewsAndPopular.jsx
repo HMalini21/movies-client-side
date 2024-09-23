@@ -2,23 +2,143 @@ import sh_title from '../assets/title-sh.png';
 import sh_bannerTwo from '../assets/netflix-sweet-home-2.jpg';
 import moreinfo from '../assets/moreinfopng.com.png';
 import TitleCard from '../components/TitleCard';
-import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import Layout from '../components/Layout';
-import { useState } from 'react';
 
 function NewAndPopular() {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [fantasy, setFantasy] = useState([]);
+  const [scifi, setScifi] = useState([]);
+  const [romcom, setRomcom] = useState([]);
+  const [thriller, setThriller] = useState([]);
+  const [horror, setHorror] = useState([]);
+  const [comedy, setComedy] = useState([]);
+  const [movie, setMovie] = useState([]);
 
-  // async function getNAPFromAPI() {
-  //   try{
+  async function getMoviesFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/netflix?category=1')
+        .then((res) => setMovies(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
-  //   }
-  //   catch()
+  async function getScifiFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setScifi(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
-  // }
+  async function getRomcomFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setRomcom(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getThrillerFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setThriller(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function getHorrorFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setHorror(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function getComdeyFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setComedy(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function getMovieFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setMovie(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function getFantasyFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=7')
+        .then((res) => setFantasy(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getMoviesFromAPI(),
+      getScifiFromAPI(),
+      getRomcomFromAPI(),
+      getThrillerFromAPI(),
+      getHorrorFromAPI(),
+      getComdeyFromAPI(),
+      getMovieFromAPI();
+    getFantasyFromAPI();
+  }, []);
+
   return (
     <Layout>
       <div className="home">
@@ -41,14 +161,17 @@ function NewAndPopular() {
                 More Info
               </button>
             </div>
-            <TitleCard />
+            {isLoading ? <p>Please wait!</p> : <TitleCard movies={movie} />}
           </div>
         </div>
         <div className="more-cards">
-          <TitleCard title={'BlockBuster Movies'} />
-          <TitleCard title={'Kdramas'} />
-          <TitleCard title={'Top Picks For You'} />
-          <TitleCard title={'Anime'} />
+          <TitleCard title={'Fantasy Movies'} movies={fantasy} />
+          <TitleCard title={'SciFi'} movies={scifi} />
+          <TitleCard title={'Romance and Comedy'} movies={romcom} />
+          <TitleCard title={'Horror'} movies={horror} />
+          <TitleCard title={'Thriller'} movies={thriller} />
+          <TitleCard title={'Comdey'} movies={comedy} />
+          <TitleCard title={'Movie'} movies={movie} />
         </div>
       </div>
     </Layout>

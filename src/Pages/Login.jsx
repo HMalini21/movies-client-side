@@ -9,6 +9,10 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+  // const [logAcc, setLogAcc] = useState('');
+
+  localStorage.setItem('mylogInfo', JSON.stringify());
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -17,12 +21,13 @@ export default function Login() {
         userName: username,
         password: password,
       };
+
       console.log('login in', userData);
       axios
         .post('http://localhost:2022/user/login', userData)
         .then((res) => {
           if (res.data) {
-            console.log(res.data, 'youre logged in');
+            console.log(res.data.generate_token, 'youre logged in');
             setErrorMessage('');
 
             navigate('/');

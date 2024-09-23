@@ -8,7 +8,7 @@ function Layout(props) {
       <Navbar />
       <main> {props.children} </main>
       {/* <Footer /> */}
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }

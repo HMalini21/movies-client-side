@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import userRed from '../assets/netflix-profile-pictures.jpg';
 import Layout from '../components/Layout';
 
 function MyAccount() {
   return (
-    <div>
-      <Layout></Layout>
-    </div>
+    <Layout>
+      <>
+        <div className="account">
+          <h2>You're watching</h2>
+          <img className="imgSize" src={userRed} />
+          <p>NILA</p>
+        </div>
+      </>
+    </Layout>
   );
 }
 

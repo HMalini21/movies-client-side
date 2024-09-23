@@ -9,19 +9,107 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function TvShow() {
+  const [tvShows, setTvShows] = useState([]);
   const [movies, setMovies] = useState([]);
   const [IsLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(false);
+  const [fantasy, setFantasy] = useState([]);
+  const [scifi, setScifi] = useState([]);
+  const [romcom, setRomcom] = useState([]);
+  const [thriller, setThriller] = useState([]);
+  const [horror, setHorror] = useState([]);
+  const [comedy, setComedy] = useState([]);
 
-  async function getMoviesFromAPI() {
+  async function getTvShowFromAPI() {
     try {
       setIsLoading(true);
       const response = await axios
-        .get('http://localhost:2022/netflix/tvshows')
-        .then((res) => setMovies(res.data.message));
+        .get('http://localhost:2022/netflix?category=6')
+        .then((res) => setTvShows(res.data.message));
       setMessage('');
     } catch (error) {
-      console.log(error);
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function getFantasyFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=1&catry=6')
+        .then((res) => setFantasy(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getHorrorFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=5&catry=6')
+        .then((res) => setHorror(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getComdeyFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=6&catry=6')
+        .then((res) => setComedy(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getScifiFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=2&catry=6')
+        .then((res) => setScifi(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getThrillerFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=4&catry=6')
+        .then((res) => setThriller(res.data.message));
+      setMessage('');
+    } catch (error) {
+      setMessage(error.message || error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function getRomcomFromAPI() {
+    try {
+      setIsLoading(true);
+      const response = await axios
+        .get('http://localhost:2022/genres/category-genre?genre=3&catry=6')
+        .then((res) => setRomcom(res.data.message));
+      setMessage('');
+    } catch (error) {
       setMessage(error.message || error.response.data.message);
     } finally {
       setIsLoading(false);
@@ -29,8 +117,13 @@ function TvShow() {
   }
 
   useEffect(() => {
-    getMoviesFromAPI();
-    console.log(movies);
+    getFantasyFromAPI(),
+      getTvShowFromAPI(),
+      getScifiFromAPI(),
+      getRomcomFromAPI(),
+      getThrillerFromAPI(),
+      getHorrorFromAPI(),
+      getComdeyFromAPI();
   }, []);
 
   return (
@@ -55,16 +148,19 @@ function TvShow() {
                 More Info
               </button>
             </div>
-            {IsLoading ? <p>Please wait!</p> : <TitleCard movies={movies} />}
+            {IsLoading ? <p>Please wait!</p> : <TitleCard movies={tvShows} />}
 
             {/* <TitleCard /> */}
           </div>
         </div>
         <div className="more-cards">
-          <TitleCard title={'Top Shows'} />
-          <TitleCard title={'Horro Shows'} />
-          <TitleCard title={'Crime Shows'} />
-          <TitleCard title={'Entertainment'} />
+          {IsLoading ? <p>Please wait!</p> : <TitleCard title={'Top Shows'} movies={tvShows} />}
+          <TitleCard title={'Entertainment'} movies={fantasy} />
+          <TitleCard title={'Entertainment'} movies={scifi} />
+          <TitleCard title={'Entertainment'} movies={romcom} />
+          <TitleCard title={'Entertainment'} movies={thriller} />
+          <TitleCard title={'Entertainment'} movies={horror} />
+          <TitleCard title={'Entertainment'} movies={comedy} />
         </div>
       </div>
     </Layout>

@@ -2,32 +2,25 @@ import { useEffect, useRef, useState } from 'react';
 import Movies_Card from '../assets/movie_card/Moviecard';
 import VideoThumbnail from './VideoThumbnail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export default function TitleCard({ title, movies }) {
-  const [clicked, isClicked] = useState(false);
-  const videoRefs = useRef([]);
-
-  // const handleMouseEnter = (index) => {
-  //   setPlayingIndex(index);
-  //   videoRefs.current[index].play();
-  // };
-
-  // const handleMouseLeave = (index) => {
-  //   setPlayingIndex(null);
-  //   videoRefs.current[index].pause();
-  //   videoRefs.current[index].currentTime = 0;
-  // };
-
+export default function TitleCard({ title, movies, favorites, setFavorites }) {
   const cardsRef = useRef();
 
   const handleScroll = (event) => {
     event.preventDefault();
     cardsRef.current.srollLeft += event.deltaY;
   };
+
   useEffect(() => {
     cardsRef.current.addEventListener('scroll', handleScroll);
   }, []);
+
+  const handleFavorites = (movie) => {
+    setFavorites((prevsFav) => [...prevsFav, movie]);
+    console.log(favorites);
+  };
+
   return (
     <div className="title-crads">
       <h2>{title ? title : 'Popular On Netflix'}</h2>
@@ -45,16 +38,9 @@ export default function TitleCard({ title, movies }) {
                   />
                   <div className="card-info">
                     <p>{card.title}</p>
-                    {clicked ? (
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        size="1x"
-                        key={index}
-                        onClick={() => isClicked(false)}
-                      />
-                    ) : (
-                      <FontAwesomeIcon icon={faPlus} size="1x" onClick={() => isClicked(true)} />
-                    )}
+                    <div onClick={() => handleFavorites(movies)}>
+                      <FontAwesomeIcon icon={faPlus} />
+                    </div>
                   </div>
                 </div>
               );
@@ -63,9 +49,7 @@ export default function TitleCard({ title, movies }) {
               return (
                 <div className="card" key={index}>
                   <VideoThumbnail imageSrc={card.image} videoSrc={card.videoSrc} />
-                  <div className="card-info">
-                    <p>{card.movieName}</p>
-                  </div>
+                  <p>{card.movieName}</p>
                 </div>
               );
             })}
